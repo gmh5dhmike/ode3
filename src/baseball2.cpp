@@ -37,11 +37,11 @@ int main(int argc, char **argv){
 
   bool showPlot=true;    // keep this flag true by default
   // pitches
-  // curve ip=0
-  // fast ip=1
-  // slider ip=2
-  // screwball ip=3
-  int ip=0;
+  // slider ip=0
+  // curve ip=1
+  // screwball ip=2
+  // fast ip=3
+  int ip=1;    // default pitch
   int c;
   while ((c = getopt (argc, argv, "p:n")) != -1)
     switch (c) {
@@ -55,20 +55,20 @@ int main(int argc, char **argv){
 
   TString title;
   if (ip==0){
-    cout << "Setting up initial conditions for curveball" << endl;
-    //SetupCurve(y0);
-  }
-  else if (ip==1){
-    cout << "Setting up initial conditions for fastball" << endl;
-    //SetupFast(y0);
-  }
-  else if (ip==2){
     cout << "Setting up initial conditions for slider" << endl;
     //SetupSlider(y0);
   }
+  else if (ip==1){
+    cout << "Setting up initial conditions for curveball" << endl;
+    //SetupCurve(y0);
+  }
+  else if (ip==2){
+    cout << "Setting up initial conditions for screwball" << endl;
+    //SetupScrewball(y0);
+  }
   else {
-      cout << "Setting up initial conditions for screwball" << endl;
-      //SetupScrewball(y0);
+    cout << "Setting up initial conditions for fastball" << endl;
+    //SetupFastball(y0);
   }
 
   TApplication theApp("App", &argc, argv); // init ROOT App for displays
